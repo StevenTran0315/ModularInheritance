@@ -9,8 +9,13 @@ package modular.inheritance;
  *
  * @author S331461152
  */
-public class ModularInheritance {
-
+public class Shape {
+       // pretend its called shape
+    
+    public Shape(){
+        int Shapes;
+    }
+    
     /**
      * @param args the command line arguments
      */
