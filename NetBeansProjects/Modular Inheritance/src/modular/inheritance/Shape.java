@@ -24,3 +24,21 @@ public class Shape {
     }
     
 }
+
+class Circle extends Shape{
+    
+    final double Pi = Math.PI;
+    double Radius;    
+    double Area;
+    double Circ;
+    
+    double Circumference(){
+        Circ = Radius*2*Math.PI;
+        return Circ;
+    }
+    
+    double Area(){
+        Area = Radius*Radius*Pi;
+        return Area;
+    }
+}
