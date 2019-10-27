@@ -10,6 +10,12 @@ package modular.inheritance;
  * @author liamu
  */
 public class Triangle extends Shape{
+    double base;
+    double height;
+    double sideA;
+    double sideB;
+    double sideC;
+    
     public double TriangleArea(double Base, double Height){
         return (Base*Height)/2;
     }
