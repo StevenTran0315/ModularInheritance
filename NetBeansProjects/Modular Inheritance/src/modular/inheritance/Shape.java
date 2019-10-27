@@ -24,50 +24,62 @@ public class Shape {
      */
         
     private static void ChoosePolygon(){
-        System.out.print("What shape do you want to calculate? ");
-        
-        System.out.println("0 : Exit");
-        System.out.println("1 : Quadrilateral");
-        System.out.println("2 : Triangle");
-
         while(0==0){
-        PolyType = sc.nextInt();
-             
-            switch(PolyType){
-                case 0:
-                    System.exit(0);
-                    break;
-                case 1://Send user to 2d shape directory
-                    ChooseQuadrilateral();
-                    break;
-                case 2:
-                    //triangle stuff
-                    break;
-                default://All other choices are invalid
-                    System.out.println("Invalid. Try again");
-                    break;
-           }
+            System.out.print("What shape do you want to calculate? ");
+        
+            System.out.println("0 : Exit");
+            System.out.println("1 : Quadrilateral");
+            System.out.println("2 : Triangle");
+            try{
+                PolyType = sc.nextInt();
+
+                switch(PolyType){
+                    case 0:
+                        System.exit(0);
+                        break;
+                    case 1://Send user to 2d shape directory
+                        ChooseQuadrilateral();
+                        break;
+                    case 2:
+                        RunTriangle();
+                        break;
+                    default://All other choices are invalid
+                        System.out.println("Invalid. Try again");
+                        break;
+               }
+            }
+            catch(InputMismatchException err){
+                        sc.next();
+                        System.out.println("Not a valid Choice. Please try again.");
+            }
         }
     }    
         
     private static void ChooseShape(){
-        while (0==0){
-           System.out.println("Is your shape a polygon '0' or circle '1'.");
-           ShapeType = sc.nextInt();
-           
-           switch(ShapeType){
-                case 0:
-                    ChoosePolygon();
-                    break;
-                case 1://Send user to 2d shape directory
-                    //Circle stuff
-                    break;
-              
-                default://All other choices are invalid
-                    System.out.println("Invalid. Try again");
-                    break;
-           }
-        }
+            while (0==0){
+               System.out.println("Is your shape a polygon '0' or circle '1'.");
+               
+                try{
+                    ShapeType = sc.nextInt();
+
+                    switch(ShapeType){
+                         case 0:
+                             ChoosePolygon();
+                             break;
+                         case 1://Send user to 2d shape directory
+                             //Circle stuff
+                             break;
+
+                         default://All other choices are invalid
+                             System.out.println("Invalid. Try again");
+                             break;
+                     }
+                }
+                catch(InputMismatchException err){
+                    sc.next();
+                    System.out.println("Not a valid Choice. Please try again.");
+                }
+            }
     }
     
     private static void ChooseType(){
@@ -81,7 +93,7 @@ public class Shape {
          }
          catch(InputMismatchException err){//If type error then throw an error and ask again
             sc.next();
-            System.out.println("Not a valid Choice.");
+            System.out.println("Not a valid Choice. Please try again.");
          }  
         }
         
@@ -91,20 +103,28 @@ public class Shape {
     }
     
     private static void ChooseQuadrilateral(){
-        
-        System.out.println("Is your shape a sqaure '0' or a rectangle/parallelogram '1'?");
         while(0==0){ 
-        
-         try{
+        System.out.println("Is your shape a square '0' or a rectangle/parallelogram '1'?");
+        try{
             QuadType = sc.nextInt();
-            break;
+            switch(QuadType){
+                         case 0:
+                             RunSquare();
+                             break;
+                         case 1:
+                             RunSquare();
+                             break;
+
+                         default:
+                             System.out.println("Invalid. Try again");
+                             break;
+                     }
          }
          catch(InputMismatchException err){//If type error then throw an error and ask again
             sc.next();
             System.out.println("Not a valid Choice.");
          }  
         }
-        RunSquare();
     }
     
     private static void RunSquare(){
@@ -113,13 +133,13 @@ public class Shape {
         
         switch(QuadType){
             case 0:
-                Square.length = getSideLength("What is the side length of the square?");
+                Square.length = getSideLength("What is the side length of the square? ");
                 OutputA("Square", Square.SquareArea(Square.length));
                 OutputP("Square",Square.SquarePerimeter(Square.length));
                 break;
             case 1:
-                Rectangle.base = getSideLength("What is the base length of the rectangle?");
-                Rectangle.height = getSideLength("What is the height of the rectangle?");
+                Rectangle.base = getSideLength("What is the base length of the rectangle? ");
+                Rectangle.height = getSideLength("What is the height of the rectangle? ");
                 OutputA("Rectangle",Rectangle.RectangleArea(Rectangle.base, Rectangle.height));
                 OutputP("Rectangle",Rectangle.RectanglePerimeter(Rectangle.base, Rectangle.height));
                 break;
@@ -128,17 +148,32 @@ public class Shape {
         }
     }
     
+    private static void RunTriangle(){
+        Triangle triangle = new Triangle();
+        
+        triangle.base = getSideLength("What is the base length of the triangle? ");
+        triangle.height = getSideLength("What is the height of the triangle? ");
+        triangle.sideA = getSideLength("What is one side length of the triangle? ");
+        triangle.sideB = getSideLength("What is another side length of the triangle? ");
+        triangle.sideC = getSideLength("What is the last side length of the triangle? ");
+        
+        OutputA("Triangle",triangle.TriangleArea(triangle.base, triangle.height));
+        OutputP("Triangle",triangle.TrianglePerimeter(triangle.sideA, triangle.sideB, triangle.sideC));
+    }
+    
     private static double getSideLength(String question){
         System.out.print(question);
         double sideLength = 0;
-        try{
-            sideLength = sc.nextDouble();
-         }
-         catch(InputMismatchException err){
-            sc.next();
-            System.out.println("Not a valid Choice.");
-         }
-        
+        while(true){
+            try{
+                sideLength = sc.nextDouble();
+                break;
+             }
+             catch(InputMismatchException err){
+                sc.next();
+                System.out.println("Not a valid Choice. Please try again.");
+             }
+        }
         return sideLength;
     }
     private static void OutputP(String Shape, double P){
