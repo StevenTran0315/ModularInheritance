@@ -77,19 +77,25 @@ public class Shape {
 
         while (0==0){
            System.out.println("Is your shape a polygon '0' or circle '1'.");
-           ShapeType = sc.nextInt();
-           
-           switch(ShapeType){
-                case 0:
-                    ChoosePolygon();
-                    break;
-                case 1:
-                    RunCircle();
-                    break;
-              
-                default:
-                    System.out.println("Invalid. Try again");
-                    break;
+           try{
+                ShapeType = sc.nextInt();
+
+                switch(ShapeType){
+                     case 0:
+                         ChoosePolygon();
+                         break;
+                     case 1:
+                         RunCircle();
+                         break;
+
+                     default:
+                         System.out.println("Invalid. Try again");
+                         break;
+                }
+           }
+           catch(InputMismatchException err){
+               sc.next();
+               System.out.println("Not a valid Choice. Please try again.");
            }
         }
 
