@@ -10,6 +10,11 @@ package modular.inheritance;
  * @author liamu
  */
 public class Quadrilateral extends Shape{
+    double length;
+    double height;
+    double base;
+    
+    
     public double SquareArea(double sideA){
         return sideA*sideA;
     }
@@ -18,15 +23,12 @@ public class Quadrilateral extends Shape{
         return sideA*4;
     }
     
-    public double ParallelogramArea(double sideA, double sideB){
+    public double RectangleArea(double sideA, double sideB){
         return sideA*sideB;
     }
     
-    public double ParallelogramPerimeter(double sideA, double sideB){
+    public double RectanglePerimeter(double sideA, double sideB){
         return 2*(sideA+sideB);
     }
     
-    public double RhombusArea(double sideP, double sideQ){
-        return (sideP*sideQ)/2;
-    }
 }
