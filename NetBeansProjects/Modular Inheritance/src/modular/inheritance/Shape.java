@@ -4,41 +4,68 @@
  * and open the template in the editor.
  */
 package modular.inheritance;
+import java.util.Scanner;
+import java.util.*;
 
 /**
  *
  * @author S331461152
  */
 public class Shape {
-       // pretend its called shape
-    
-    public Shape(){
-        int Shapes;
-    }
+        static Scanner sc = new Scanner(System.in);
+        static int ShapeType;
+        static int CalcType;
+        static boolean area;
     
     /**
      * @param args the command line arguments
      */
+        
+    private static void ChoosePolygon(){
+        
+    }    
+        
+    private static void ChooseShape(){
+        while (0==0){
+           System.out.println("Is your shape a polygon '0' or circle '1'.");
+           ShapeType = sc.nextInt();
+           
+           switch(ShapeType){
+                case 0:
+                    ChoosePolygon();
+                    break;
+                case 1://Send user to 2d shape directory
+                    //Circle stuff
+                    break;
+              
+                default://All other choices are invalid
+                    System.out.println("Invalid. Try again");
+                    break;
+           }
+        }
+    }
+    
+    private static void ChooseType(){
+        
+        System.out.println("Do you want area '0' or perimeter '1'.");
+        while(0==0){ 
+        
+         try{
+            CalcType = sc.nextInt();
+            break;
+         }
+         catch(InputMismatchException err){//If type error then throw an error and ask again
+            sc.next();
+            System.out.println("Not a valid Choice.");
+         }  
+        }
+        ChooseShape();
+       
+        
+    }
     public static void main(String[] args) {
         // TODO code application logic here
+      ChooseType();  
     }
-    
 }
 
-class Circle extends Shape{
-    
-    final double Pi = Math.PI;
-    double Radius;    
-    double Area;
-    double Circ;
-    
-    double Circumference(){
-        Circ = Radius*2*Math.PI;
-        return Circ;
-    }
-    
-    double Area(){
-        Area = Radius*Radius*Pi;
-        return Area;
-    }
-}
