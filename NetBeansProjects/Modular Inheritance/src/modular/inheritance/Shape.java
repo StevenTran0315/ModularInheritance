@@ -55,31 +55,44 @@ public class Shape {
         }
     }    
         
+    private static void RunCircle(){
+        Circle Acircle = new Circle();
+        Circle Pcircle = new Circle();
+        
+        switch(CalcType){
+            case 0: //area
+                Acircle.GetRadius();
+                OutputA("Circle",Acircle.Area());
+                break;
+            case 1: //perimeter
+                Pcircle.GetRadius();
+                OutputP("Circle", Pcircle.Circumference());
+                break;
+            default:
+                break;
+        }
+    }
+    
     private static void ChooseShape(){
-            while (0==0){
-               System.out.println("Is your shape a polygon '0' or circle '1'.");
-               
-                try{
-                    ShapeType = sc.nextInt();
 
-                    switch(ShapeType){
-                         case 0:
-                             ChoosePolygon();
-                             break;
-                         case 1://Send user to 2d shape directory
-                             //Circle stuff
-                             break;
+        while (0==0){
+           System.out.println("Is your shape a polygon '0' or circle '1'.");
+           ShapeType = sc.nextInt();
+           
+           switch(ShapeType){
+                case 0:
+                    ChoosePolygon();
+                    break;
+                case 1:
+                    RunCircle();
+                    break;
+              
+                default:
+                    System.out.println("Invalid. Try again");
+                    break;
+           }
+        }
 
-                         default://All other choices are invalid
-                             System.out.println("Invalid. Try again");
-                             break;
-                     }
-                }
-                catch(InputMismatchException err){
-                    sc.next();
-                    System.out.println("Not a valid Choice. Please try again.");
-                }
-            }
     }
     
     private static void ChooseType(){
@@ -91,7 +104,7 @@ public class Shape {
             CalcType = sc.nextInt();
             break;
          }
-         catch(InputMismatchException err){//If type error then throw an error and ask again
+         catch(InputMismatchException err){
             sc.next();
             System.out.println("Not a valid Choice. Please try again.");
          }  

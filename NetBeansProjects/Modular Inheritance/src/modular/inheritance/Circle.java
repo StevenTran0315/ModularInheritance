@@ -4,25 +4,39 @@
  * and open the template in the editor.
  */
 package modular.inheritance;
-
+import java.util.Scanner;
+import java.util.*;
 /**
  *
  * @author Steven
  */
 public class Circle extends Shape{
     
+    static Scanner sc = new Scanner(System.in);
     final double Pi = Math.PI;
-    double Radius;    
-    double Area;
-    double Circ;
+    protected double Radius;    
     
-    double Circumference(){
-        Circ = Radius*2*Math.PI;
-        return Circ;
+    protected double Circumference(){
+        return Radius*2*Math.PI;
     }
     
-    double Area(){
-        Area = Radius*Radius*Pi;
-        return Area;
+    protected double Area(){
+        return Radius*Radius*Pi;
     }
+    
+    public void GetRadius(){
+        System.out.println("What is the radius of the circle");
+        while (0==0){
+            try{
+                Radius = sc.nextDouble();
+                break;
+            }
+            catch (InputMismatchException err){
+                sc.next();
+                System.out.print("Invalid radius");
+            }
+        }
+    }
+    
+    
 }
