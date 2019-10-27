@@ -36,19 +36,37 @@ public class Shape {
                 case 0:
                     System.exit(0);
                     break;
-                case 1://Send user to 2d shape directory
+                case 1:
                     //Quad
                     break;
                 case 2:
                     //triangle stuff
                     break;
-                default://All other choices are invalid
+                default:
                     System.out.println("Invalid. Try again");
                     break;
            }
         }
     }    
         
+    private static void RunCircle(){
+        Circle Acircle = new Circle();
+        Circle Pcircle = new Circle();
+        
+        switch(CalcType){
+            case 0: //area
+                Acircle.GetRadius();
+                OutputA("Circle",Acircle.Area());
+                break;
+            case 1: //perimeter
+                Pcircle.GetRadius();
+                OutputP("Circle", Pcircle.Circumference());
+                break;
+            default:
+                break;
+        }
+    }
+    
     private static void ChooseShape(){
         while (0==0){
            System.out.println("Is your shape a polygon '0' or circle '1'.");
@@ -58,11 +76,11 @@ public class Shape {
                 case 0:
                     ChoosePolygon();
                     break;
-                case 1://Send user to 2d shape directory
-                    //Circle stuff
+                case 1:
+                    RunCircle();
                     break;
               
-                default://All other choices are invalid
+                default:
                     System.out.println("Invalid. Try again");
                     break;
            }
@@ -78,7 +96,7 @@ public class Shape {
             CalcType = sc.nextInt();
             break;
          }
-         catch(InputMismatchException err){//If type error then throw an error and ask again
+         catch(InputMismatchException err){
             sc.next();
             System.out.println("Not a valid Choice.");
          }  
@@ -88,6 +106,15 @@ public class Shape {
        
         
     }
+    
+    private static void OutputP(String Shape, double P){
+        System.out.printf("The %s 's perimeter is %.2f units.\n", Shape, P);
+    }
+    
+    private static void OutputA(String Shape, double A){
+        System.out.printf("The %s 's area is %.2f units squared.\n", Shape, A);
+    }
+    
     public static void main(String[] args) {
         // TODO code application logic here
       ChooseType();  
