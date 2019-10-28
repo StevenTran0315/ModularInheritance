@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package modular.inheritance;
+import modular.inheritance.Polygon.*;
 import java.util.Scanner;
 import java.util.*;
 
@@ -17,7 +18,6 @@ public class Shape {
         static int CalcType;
         static int PolyType;
         static int QuadType;
-        static double sideLength;
         static int QuadrilateralType;
     /**
      * @param args the command line arguments
@@ -115,18 +115,18 @@ public class Shape {
     }
     
     private static void RunSquare(){
-        Quadrilateral Square = new Quadrilateral(); // A new square is instatiated
-        Quadrilateral Rectangle = new Quadrilateral(); //new Rectangle is instatiated
+        Square square = new Square(); // A new square is instatiated
+        Rectangle rectangle = new Rectangle(); //new Rectangle is instatiated
         
         switch(QuadType){ //switch case to determine square or rectangle and only allows inputs of 0 or 1
             case 0: //Square
-                Square.length = getSideLength("What is the side length of the square? "); //Asks the user for the side length
-                OutputCalc("Square",Square.SquarePerimeter(Square.length), Square.SquareArea(Square.length)); //Calculates the area and perimeter and outputs
+                square.length = square.getSideLength("What is the side length of the square? "); //Asks the user for the side length
+                OutputCalc("Square",square.SquarePerimeter(Square.length), square.SquareArea(Square.length)); //Calculates the area and perimeter and outputs
                 break;
             case 1:
-                Rectangle.base = getSideLength("What is the base length of the rectangle? "); //Asks for the base
-                Rectangle.height = getSideLength("What is the height of the rectangle? "); //Asks for the height
-                OutputCalc("Rectangle",Rectangle.RectanglePerimeter(Rectangle.base, Rectangle.height),Rectangle.RectangleArea(Rectangle.base, Rectangle.height)); //Calculates the area and perimeter and outputs
+                rectangle.base = rectangle.getSideLength("What is the base length of the rectangle? "); //Asks for the base
+                rectangle.height = rectangle.getSideLength("What is the height of the rectangle? "); //Asks for the height
+                OutputCalc("Rectangle",rectangle.RectanglePerimeter(Rectangle.base, Rectangle.height),rectangle.RectangleArea(Rectangle.base, Rectangle.height)); //Calculates the area and perimeter and outputs
                 break;
             default:
                 break;
@@ -136,28 +136,15 @@ public class Shape {
     private static void RunTriangle(){ //Runs the triangle calculations
         Triangle triangle = new Triangle(); //Creates a new triangle
         
-        triangle.base = getSideLength("What is the base length of the triangle? "); //Asks for the base for the area
-        triangle.height = getSideLength("What is the height of the triangle? "); //Asks for the height for the area
-        triangle.sideA = getSideLength("What is one side length (not base) of the triangle? "); //Asks for a second side length
-        triangle.sideB = getSideLength("What is another side length (not base) of the triangle? "); //Asks for the last side length
+        triangle.base = triangle.getSideLength("What is the base length of the triangle? "); //Asks for the base for the area
+        triangle.height = triangle.getSideLength("What is the height of the triangle? "); //Asks for the height for the area
+        triangle.sideA = triangle.getSideLength("What is one side length (not base) of the triangle? "); //Asks for a second side length
+        triangle.sideB = triangle.getSideLength("What is another side length (not base) of the triangle? "); //Asks for the last side length
         
         OutputCalc("Triangle",triangle.TrianglePerimeter(triangle.sideA, triangle.sideB, triangle.base),triangle.TriangleArea(triangle.base, triangle.height));//Calculates the area and perimeter and outputs
     }
     
-    private static double getSideLength(String question){ //Method to get a side length when a question is inputted
-        System.out.print(question); //prints the question
-        while(true){ //loops until valid answer is inputted
-            try{
-                sideLength = sc.nextDouble(); //trys to get a double
-                break;
-             }
-             catch(InputMismatchException err){ //if input is invalid they try again
-                sc.next();
-                System.out.println("Not a valid Choice. Please try again.");
-             }
-        }
-        return sideLength; //returns the valid input given
-    }
+  
     private static void OutputCalc(String Shape, double P, double A){ //Outputs the perimeter and area of the shape provided
         System.out.printf("The %s's perimeter is %.2f units.\nThe area is %.2f.\n", Shape, P, A); //prints it out
     }

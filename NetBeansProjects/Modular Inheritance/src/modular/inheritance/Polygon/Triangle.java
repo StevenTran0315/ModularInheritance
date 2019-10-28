@@ -3,17 +3,17 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package modular.inheritance;
+package modular.inheritance.Polygon;
 
 /**
  *
  * @author liamu
  */
-public class Triangle extends Shape{
-    double base;
-    double height;
-    double sideA;
-    double sideB;
+public class Triangle extends Polygon{
+    public static double base;
+    public static double height;
+    public static double sideA;
+    public static double sideB;
     
     public double TriangleArea(double Base, double Height){ //Calculates the area
         return (Base*Height)/2;
