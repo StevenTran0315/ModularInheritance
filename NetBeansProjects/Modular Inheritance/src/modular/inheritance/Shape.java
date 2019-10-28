@@ -15,27 +15,51 @@ import java.util.*;
  */
 public class Shape {
         static Scanner sc = new Scanner(System.in); 
+        
         static int ShapeType;
         static int CalcType;
         static int PolyType;
         static int QuadType;
         static int QuadrilateralType;
+        static double sideLength;
     /**
      * @param args the command line arguments
      */
-        
+    
+    public double Area(){ //basic area calculation to be overloaded /overrided
+        return sideLength*sideLength;
+    }
+    
+    public double Perimeter(){ //basic perimeter calculation to be overloaded / overrided
+        return 2*sideLength+sideLength;
+    }
+    
+    public double getSideLength(String question){ //Method to get a side length when a question is inputted
+        System.out.print(question); //prints the question
+        while(true){ //loops until valid answer is inputted
+            try{
+                sideLength = sc.nextDouble(); //trys to get a double
+                break;
+             }
+             catch(InputMismatchException err){ //if input is invalid they try again
+                sc.next();
+                System.out.println("Not a valid Choice. Please try again.");
+             }
+        }
+        return sideLength; //returns the valid input given
+    }
     private static void ChoosePolygon(){ //Allows the user to choose what type of polygon to calculate
         while(0==0){ //loops until a valid integer is entered.
             
             System.out.println("What shape do you want to calculate? "); // Asks the user what shape they want and displays their options
-            System.out.println("0 : Exit \n1 : Quadrilateral\n2 : Triangle");
+            System.out.println("0 : Exit back to Main menu \n1 : Quadrilateral\n2 : Triangle");
 
             try{
                 PolyType = sc.nextInt(); //try to take an integer input
 
                 switch(PolyType){ //switch case to choose what polygon and only allows inputs of 0 or 1
                     case 0:
-                        System.exit(0); //exits the code
+                        ChooseShape(); //exits the code
                         break;
                     case 1://Sends the user to choose a quadrilateral
                         ChooseQuadrilateral();
@@ -58,8 +82,8 @@ public class Shape {
     private static void RunCircle(){ //Runs the circle calculations
         Circle circle = new Circle(); //creates new circle
         
-        circle.GetRadius(); //user enters in the radius
-        OutputCalc("Circle",circle.Circumference(),circle.Area()); //calculates the area and perimeter and outputs it
+        circle.Radius = circle.getSideLength("What is the radius of the circle"); //user enters in the radius
+        OutputCalc("Circle",circle.Perimeter(),circle.Area()); //calculates the area and perimeter and outputs it
 
     }
     
@@ -122,12 +146,12 @@ public class Shape {
         switch(QuadType){ //switch case to determine square or rectangle and only allows inputs of 0 or 1
             case 0: //Square
                 square.length = square.getSideLength("What is the side length of the square? "); //Asks the user for the side length
-                OutputCalc("Square",square.SquarePerimeter(Square.length), square.SquareArea(Square.length)); //Calculates the area and perimeter and outputs
+                OutputCalc("Square",square.Perimeter(Square.length), square.Area(Square.length)); //Calculates the area and perimeter and outputs
                 break;
             case 1:
                 rectangle.base = rectangle.getSideLength("What is the base length of the rectangle? "); //Asks for the base
                 rectangle.height = rectangle.getSideLength("What is the height of the rectangle? "); //Asks for the height
-                OutputCalc("Rectangle",rectangle.RectanglePerimeter(Rectangle.base, Rectangle.height),rectangle.RectangleArea(Rectangle.base, Rectangle.height)); //Calculates the area and perimeter and outputs
+                OutputCalc("Rectangle",rectangle.Perimeter(Rectangle.base, Rectangle.height),rectangle.Area(Rectangle.base, Rectangle.height)); //Calculates the area and perimeter and outputs
                 break;
             default:
                 break;
@@ -142,7 +166,7 @@ public class Shape {
         triangle.sideA = triangle.getSideLength("What is one side length (not base) of the triangle? "); //Asks for a second side length
         triangle.sideB = triangle.getSideLength("What is another side length (not base) of the triangle? "); //Asks for the last side length
         
-        OutputCalc("Triangle",triangle.TrianglePerimeter(triangle.sideA, triangle.sideB, triangle.base),triangle.TriangleArea(triangle.base, triangle.height));//Calculates the area and perimeter and outputs
+        OutputCalc("Triangle",triangle.Perimeter(triangle.sideA, triangle.sideB, triangle.base),triangle.Area(triangle.base, triangle.height));//Calculates the area and perimeter and outputs
     }
     
   
