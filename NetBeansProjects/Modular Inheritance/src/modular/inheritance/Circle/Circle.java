@@ -3,9 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package modular.inheritance;
+package modular.inheritance.Circle;
 import java.util.Scanner;
 import java.util.*;
+import modular.inheritance.Shape;
 /**
  *
  * @author Steven
@@ -16,11 +17,11 @@ public class Circle extends Shape{
     final double Pi = Math.PI;
     protected double Radius;    
     
-    protected double Circumference(){ //Calculates the circumference
+    public double Circumference(){ //Calculates the circumference
         return Radius*2*Math.PI;
     }
     
-    protected double Area(){ //Calculates the area
+    public double Area(){ //Calculates the area
         return Radius*Radius*Pi;
     }
     

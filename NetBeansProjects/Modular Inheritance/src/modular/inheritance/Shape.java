@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package modular.inheritance;
+import modular.inheritance.Circle.*;
 import modular.inheritance.Polygon.*;
 import java.util.Scanner;
 import java.util.*;
