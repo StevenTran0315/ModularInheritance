@@ -147,7 +147,7 @@ public class Shape {
     
   
     private static void OutputCalc(String Shape, double P, double A){ //Outputs the perimeter and area of the shape provided
-        System.out.printf("The %s's perimeter is %.2f units.\nThe area is %.2f.\n", Shape, P, A); //prints it out
+        System.out.printf("The %s's perimeter is %.2f units.\nThe %s's area is %.2f units squared.\n", Shape, P, Shape, A); //prints it out
     }
 
 
