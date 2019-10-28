@@ -16,22 +16,22 @@ public class Circle extends Shape{
     final double Pi = Math.PI;
     protected double Radius;    
     
-    protected double Circumference(){
+    protected double Circumference(){ //Calculates the circumference
         return Radius*2*Math.PI;
     }
     
-    protected double Area(){
+    protected double Area(){ //Calculates the area
         return Radius*Radius*Pi;
     }
     
-    public void GetRadius(){
+    public void GetRadius(){ //Asks for the radius
         System.out.println("What is the radius of the circle");
-        while (0==0){
-            try{
-                Radius = sc.nextDouble();
+        while (0==0){ //Loops until a valid input is given
+            try{ 
+                Radius = sc.nextDouble(); //tries to get a valid double
                 break;
             }
-            catch (InputMismatchException err){
+            catch (InputMismatchException err){ //If input is invalid, the user tries again
                 sc.next();
                 System.out.print("Invalid radius");
             }

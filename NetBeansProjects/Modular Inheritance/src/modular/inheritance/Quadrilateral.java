@@ -15,19 +15,19 @@ public class Quadrilateral extends Shape{
     double base;
     
     
-    public double SquareArea(double sideA){
+    public double SquareArea(double sideA){ //Calculates the square's area
         return sideA*sideA;
     }
     
-    public double SquarePerimeter(double sideA){
+    public double SquarePerimeter(double sideA){ //Calculates the squares perimeter
         return sideA*4;
     }
     
-    public double RectangleArea(double sideA, double sideB){
+    public double RectangleArea(double sideA, double sideB){ //Calculates the rectangles perimeter
         return sideA*sideB;
     }
     
-    public double RectanglePerimeter(double sideA, double sideB){
+    public double RectanglePerimeter(double sideA, double sideB){ //calculates the rectangles perimeter
         return 2*(sideA+sideB);
     }
     

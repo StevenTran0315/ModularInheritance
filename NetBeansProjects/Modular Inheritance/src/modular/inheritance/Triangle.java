@@ -14,13 +14,12 @@ public class Triangle extends Shape{
     double height;
     double sideA;
     double sideB;
-    double sideC;
     
-    public double TriangleArea(double Base, double Height){
+    public double TriangleArea(double Base, double Height){ //Calculates the area
         return (Base*Height)/2;
     }
     
-    public double TrianglePerimeter(double sideA, double sideB, double sideC){
+    public double TrianglePerimeter(double sideA, double sideB, double sideC){ //calculates the perimeter
         return sideA+sideB+sideC;
     }
    
