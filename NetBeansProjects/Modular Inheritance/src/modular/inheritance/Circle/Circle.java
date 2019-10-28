@@ -15,28 +15,16 @@ public class Circle extends Shape{
     
     static Scanner sc = new Scanner(System.in);
     final double Pi = Math.PI;
-    protected double Radius;    
+    public double Radius;    
     
-    public double Circumference(){ //Calculates the circumference
+    @Override
+    public double Perimeter(){ //Calculates the circumference
         return Radius*2*Math.PI;
     }
     
+    @Override
     public double Area(){ //Calculates the area
         return Radius*Radius*Pi;
-    }
-    
-    public void GetRadius(){ //Asks for the radius
-        System.out.println("What is the radius of the circle");
-        while (0==0){ //Loops until a valid input is given
-            try{ 
-                Radius = sc.nextDouble(); //tries to get a valid double
-                break;
-            }
-            catch (InputMismatchException err){ //If input is invalid, the user tries again
-                sc.next();
-                System.out.print("Invalid radius");
-            }
-        }
     }
     
     

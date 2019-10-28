@@ -15,11 +15,11 @@ public class Triangle extends Polygon{
     public static double sideA;
     public static double sideB;
     
-    public double TriangleArea(double Base, double Height){ //Calculates the area
+    public double Area(double Base, double Height){ //Calculates the area
         return (Base*Height)/2;
     }
     
-    public double TrianglePerimeter(double sideA, double sideB, double sideC){ //calculates the perimeter
+    public double Perimeter(double sideA, double sideB, double sideC){ //calculates the perimeter
         return sideA+sideB+sideC;
     }
    

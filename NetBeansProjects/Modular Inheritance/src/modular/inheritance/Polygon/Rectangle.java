@@ -10,11 +10,10 @@ package modular.inheritance.Polygon;
  * @author Steven
  */
 public class Rectangle extends Polygon{
-    public double RectangleArea(double sideA, double sideB){ //Calculates the rectangles perimeter
+    public double Area(double sideA, double sideB){ //Calculates the rectangles perimeter
         return sideA*sideB;
     }
-    
-    public double RectanglePerimeter(double sideA, double sideB){ //calculates the rectangles perimeter
+    public double Perimeter(double sideA, double sideB){ //calculates the rectangles perimeter
         return 2*(sideA+sideB);
     }
 }

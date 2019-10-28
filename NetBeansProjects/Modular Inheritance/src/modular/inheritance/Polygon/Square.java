@@ -10,11 +10,11 @@ package modular.inheritance.Polygon;
  * @author Steven
  */
 public class Square extends Polygon {
-    public double SquareArea(double sideA){ //Calculates the square's area
+    public double Area(double sideA){ //Calculates the square's area
         return sideA*sideA;
     }
     
-    public double SquarePerimeter(double sideA){ //Calculates the squares perimeter
+    public double Perimeter(double sideA){ //Calculates the squares perimeter
         return sideA*4;
     }
 }
